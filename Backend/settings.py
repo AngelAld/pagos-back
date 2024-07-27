@@ -3,6 +3,7 @@ Django settings for Backend project.
 
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,8 +19,11 @@ SECRET_KEY = "django-insecure-l)_h@+x$_^@_-m&bdx_2mkp_o93l&e(s&mtej0y=z_sp82@4!2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# DEBUG = False
+
 ALLOWED_HOSTS = []
 
+# ALLOWED_HOSTS = ["pagos.pythonanywhere.com"]
 
 # Application definition
 
@@ -34,6 +38,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "Api",
     "Pago",
+    "Usuario",
 ]
 
 MIDDLEWARE = [
@@ -78,6 +83,18 @@ DATABASES = {
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'pagos$pagos',
+#         'USER': 'pagos',
+#         'PASSWORD': 'perropeludo1',
+#         'HOST': 'pagos.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -116,6 +133,10 @@ STATIC_URL = "static/"
 MEDIA_URL = "media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
